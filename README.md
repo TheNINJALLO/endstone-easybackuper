@@ -20,8 +20,9 @@
 </p>
 
 <p align="center">
-  <a href="#overview">Overview</a> &bull;
-  <a href="#compatibility">Compatibility</a> &bull;
+  <a href="#what-it-does">What it does</a> &bull;
+  <a href="#how-to-use">How to use</a> &bull;
+  <a href="#commands-and-permissions">Commands</a> &bull;
   <a href="#install">Install</a> &bull;
   <a href="https://github.com/TheNINJALLO/endstone-easybackuper/releases">Releases</a>
 </p>
@@ -30,11 +31,23 @@
 
 The simplest Python hot backup plugin based on EndStone. This release is aligned with Endstone 0.11.8 and Minecraft Bedrock Dedicated Server 1.26.40, and is distributed as a Python wheel for direct installation in an Endstone server.
 
-## Capabilities
+## What it does
 
-- Hot backups without taking the Bedrock server offline
-- Simple wheel-based installation
-- Operational defaults designed for self-hosted Endstone servers
+- Creates hot world backups by coordinating Bedrock's `save hold`, `save query`, and `save resume` flow.
+- Copies a consistent world snapshot and archives it without requiring a full server shutdown.
+- Exposes simple initialization, reload, and manual-backup operations for operators and the console.
+
+## How to use
+
+1. Run `/backup init` once if the generated paths need initialization, then inspect the plugin's backup settings.
+2. Run `/backup` from the console or as an operator to create a snapshot and wait for the success message before moving the archive.
+3. Use `/backup reload` after changing settings and periodically test a restore on a separate server.
+
+## Commands and permissions
+
+| Command / usage | What it does | Access |
+|---|---|---|
+| `/backup`<br>`/backup <init>`<br>`/backup <reload>` | Create a hot backup (console or OP). | `easybackuper_plugin.command.only_op` |
 
 ## Compatibility
 
